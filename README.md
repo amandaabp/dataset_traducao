@@ -9,5 +9,5 @@ docker-compose up -d
 
 Para deletar o container e a imagem com Docker Compose, use
 ```bash
-docker-compose down -rmi 'all'
+docker-compose down --rmi 'all'
 ```
