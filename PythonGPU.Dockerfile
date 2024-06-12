@@ -63,8 +63,6 @@ RUN python3 -m pip install --upgrade pip
 # Instalar PyTorch e torchvision
 RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
 
-RUN pip install --pre onnxruntime-genai-cuda --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
-
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
