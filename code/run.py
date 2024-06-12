@@ -79,11 +79,12 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS, description="End-to-end AI Question/Answer example for gen-ai")
-    parser.add_argument('-m', '--model_name Phi-3-mini-4k-instruct-onnx', type=str, required=True, help='Onnx model folder path (must contain config.json and model.onnx)')
+    
     args = parser.parse_args()
     main(args)
 
     ''''
+    parser.add_argument('-m', '--model_name Phi-3-mini-4k-instruct-onnx', type=str, required=True, help='Onnx model folder path (must contain config.json and model.onnx)')
     parser.add_argument('-i', '--min_length', type=int, help='Min number of tokens to generate including the prompt')
     parser.add_argument('-l', '--max_length', type=int, help='Max number of tokens to generate including the prompt')
     parser.add_argument('-ds', '--do_sample', action='store_true', default=False, help='Do random sampling. When false, greedy or beam search are used to generate the output. Defaults to false')
