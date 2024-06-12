@@ -20,7 +20,6 @@ COPY ./requirements.txt ./
 
 # Instalar pacotes especificados nos requirements
 RUN python3 -m pip install -r requirements.txt
-RUN python3 -m pip install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
 
 # Upgrade pip
 RUN python3 -m pip install --upgrade pip
@@ -28,6 +27,8 @@ RUN python3 -m pip install --upgrade pip
 # Instalar PyTorch e torchvision
 RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
 
+# Instalar onnxruntime-genai-cuda
+RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
 
 # Copia todo o projeto para dentro do container
 COPY ./ ./
