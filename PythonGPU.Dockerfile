@@ -30,6 +30,8 @@ RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/wh
 # Instalar onnxruntime-genai-cuda
 RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
 
+RUN pip3 install tensorrt
+
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
