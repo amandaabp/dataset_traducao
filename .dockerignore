@@ -1,0 +1,14 @@
+.dockerignore
+Dockerfile
+README.md
+docker-compose.yml
+Python
+results
+.venv
+.git
+*.cover
+*.log
+*.pyc
+*.pyo
+*.pyd
+__pycache__
