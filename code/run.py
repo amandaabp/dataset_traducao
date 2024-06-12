@@ -79,7 +79,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS, description="End-to-end AI Question/Answer example for gen-ai")
-    
+    parser.add_argument('-v', '--verbose', action='store_true', default=False, help='Print verbose output and timing information. Defaults to false')
+    parser.add_argument('-g', '--timings', action='store_true', default=False, help='Print timing information for each generation step. Defaults to false')
     args = parser.parse_args()
     main(args)
 
@@ -92,7 +93,5 @@ if __name__ == "__main__":
     parser.add_argument('-k', '--top_k', type=int, help='Top k tokens to sample from')
     parser.add_argument('-t', '--temperature', type=float, help='Temperature to sample with')
     parser.add_argument('-r', '--repetition_penalty', type=float, help='Repetition penalty to sample with')
-    parser.add_argument('-v', '--verbose', action='store_true', default=False, help='Print verbose output and timing information. Defaults to false')
-    parser.add_argument('-g', '--timings', action='store_true', default=False, help='Print timing information for each generation step. Defaults to false')
-    args = parser.parse_args()
+    
     main(args)'''
