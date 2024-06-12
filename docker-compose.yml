@@ -10,9 +10,9 @@ services:
     runtime: nvidia
     volumes: 
       - ./code:/traducao-amanda-container/code-container
-      - NVIDIA_VISIBLE_DEVICES=all
     environment:
       - PIP_NO_CACHE_DIR=1
+      - NVIDIA_VISIBLE_DEVICES=all
 # Para o computador do CEIA: Limitações de CPU e reserva de GPU
     deploy:
       resources:
