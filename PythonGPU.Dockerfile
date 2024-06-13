@@ -35,6 +35,8 @@ RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.v
 
 RUN pip3 install tensorrt
 
+RUN pip install tiktoken
+
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
