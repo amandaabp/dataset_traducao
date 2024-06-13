@@ -57,4 +57,5 @@ COPY ./ ./
 WORKDIR /traducao-amanda-container/code-container
 
 # Set the entrypoint
-ENTRYPOINT ["python3","run.py", "tail", "-f", "/dev/null"]
+ENTRYPOINT ["python3","run.py"]
+CMD tail -f /dev/null
