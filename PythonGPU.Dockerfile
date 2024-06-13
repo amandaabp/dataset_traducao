@@ -49,7 +49,11 @@ RUN pip3 install einops
 
 RUN pip3 install pytest
 
-RUN CUDA_HOME=/usr/local/cuda-11.7 pip3 install 'flash-attn==1.0.4'
+RUN pip3 install packaging
+
+RUN pip3 install ninja
+
+RUN CUDA_HOME=/usr/local/cuda-11.7 pip3 install 'flash-attn==1.0.4' --no-build-isolation
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
