@@ -48,7 +48,7 @@ RUN pip3 install einops
 
 RUN pip3 install pytest
 
-RUN echo $(ls /usr/local)
+RUN echo $(ls -1 /usr/local)
 #RUN echo $(ls /usr/local/cuda-11.8)
 RUN echo $(nvcc --version)
 
