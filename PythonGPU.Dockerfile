@@ -1,7 +1,9 @@
-FROM nvidia/cuda:11.6.1-base-ubuntu20.04
+FROM nvidia/cuda:12.4.1-base-ubuntu20.04
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
+# Adicionando variavel de ambiente
+ENV PATH=/usr/local/cuda-12.4.1/bin:$PATH
 
 # Install system dependencies
 RUN apt-get update 
@@ -41,10 +43,7 @@ RUN pip install einops
 
 RUN pip install pytest
 
-RUN pip install --upgrade pip
-
 RUN pip install flash-attn
-
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
