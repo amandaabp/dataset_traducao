@@ -1,5 +1,9 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+import flash_attn
+from pprint import pprint
+
+pprint(vars(flash_attn))
 
 torch.random.manual_seed(0)
 model_id = "microsoft/Phi-3-small-8k-instruct"
