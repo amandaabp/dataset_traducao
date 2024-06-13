@@ -15,7 +15,7 @@ RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-opencv
 RUN apt-get install -y libglib2.0-0
 #RUN apt-get install -y cuda-11.0
-RUN apt-get install -y cuda-12.4.1
+RUN apt-get install -y cuda-11.7
 RUN apt-get install -y libcudnn8
 RUN apt-get install -y libcudnn8-dev
 
@@ -25,11 +25,12 @@ WORKDIR /traducao-amanda-container
 # Copiar os requirements para o container
 COPY ./requirements.txt ./
 
-# Instalar pacotes especificados nos requirements
-RUN python3 -m pip install -r requirements.txt
-
 # Upgrade pip
 RUN python3 -m pip install --upgrade pip
+
+
+# Instalar pacotes especificados nos requirements
+RUN python3 -m pip install -r requirements.txt
 
 # Instalar PyTorch e torchvision
 RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
