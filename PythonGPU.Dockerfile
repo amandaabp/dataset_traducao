@@ -3,8 +3,8 @@ FROM nvidia/cuda:12.4.1-base-ubuntu20.04
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 # Adicionando variavel de ambiente
-ENV CUDA_HOME = /usr/local/cuda-12.4
-ENV PATH=${CUDA_HOME}/bin:${PATH}
+# ENV CUDA_HOME = /usr/local/cuda-12.4
+# ENV PATH=${CUDA_HOME}/bin:${PATH}
 
 # Install system dependencies
 RUN apt-get update 
@@ -46,7 +46,7 @@ RUN pip3 install einops
 
 RUN pip3 install pytest
 
-# RUN pip3 install flash-attn===1.0.4
+RUN CUDA_HOME = /usr/local/cuda-11.7 pip3 install 'flash-attn==1.0.4'
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
