@@ -31,6 +31,7 @@ RUN python3 -m pip install --upgrade pip
 RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
 
 RUN huggingface-cli download microsoft/Phi-3-mini-4k-instruct-onnx --include cuda/cuda-int4-rtn-block-32/* --local-dir .
+
 # Instalar onnxruntime-genai-cuda
 RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
 
@@ -43,4 +44,4 @@ COPY ./ ./
 WORKDIR /traducao-amanda-container/code-container
 
 # Set the entrypoint
-ENTRYPOINT ["python3","run.py"]
+ENTRYPOINT ["python3","run.py", "-m cuda/cuda-int4-rtn-block-32"]
