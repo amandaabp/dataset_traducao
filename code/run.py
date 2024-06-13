@@ -1,9 +1,3 @@
-import flash_attn
-from pprint import pprint
-
-flash_attn.__version__ = "1.0.4"
-pprint(vars(flash_attn))
-
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
