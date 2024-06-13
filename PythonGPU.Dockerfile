@@ -3,8 +3,9 @@ FROM nvidia/cuda:12.4.1-base-ubuntu20.04
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 # Adicionando variavel de ambiente
-ENV CUDA_HOME = /usr/local/cuda-12.4.1
+ENV CUDA_HOME = /usr/local/cuda-12.4
 ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV PATH=/usr/local/cuda-12.4/bin/nvcc
 
 # Install system dependencies
 RUN apt-get update 
