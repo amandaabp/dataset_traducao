@@ -39,6 +39,8 @@ RUN pip install tiktoken
 
 RUN pip install einops
 
+RUN pip install pytest
+
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
