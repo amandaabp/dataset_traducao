@@ -14,8 +14,6 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-opencv
 RUN apt-get install -y libglib2.0-0
-#RUN apt-get install -y cuda-11.0
-RUN apt-get install -y cuda-11.7
 RUN apt-get install -y libcudnn8
 RUN apt-get install -y libcudnn8-dev
 
