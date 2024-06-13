@@ -8,10 +8,12 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype="auto", 
     trust_remote_code=True, 
 )
-assert torch.cuda.is_available(), "This model needs a GPU to run ..."
-device = torch.cuda.current_device()
-model = model.to(device)
-print('MODEL',model)
+
+if torch.cuda.is_available():
+    print("Cuda está disponível. GPU será usada.")
+else:
+    print("Cuda não está disponível. CPU será usada.")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
 messages = [
