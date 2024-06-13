@@ -34,4 +34,8 @@ generation_args = {
 }
 
 output = pipe(messages, **generation_args)
+import json
+with open('data.json', 'w') as f:
+    json.dump(output, f)
+
 print(output[0]['generated_text'])
