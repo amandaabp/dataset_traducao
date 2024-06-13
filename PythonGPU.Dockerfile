@@ -25,11 +25,11 @@ WORKDIR /traducao-amanda-container
 # Copiar os requirements para o container
 COPY ./requirements.txt ./
 
-# Instalar pacotes especificados nos requirements
-RUN python3 -m pip install -r requirements.txt
-
 # Upgrade pip
 RUN python3 -m pip install --upgrade pip
+
+# Instalar pacotes especificados nos requirements
+RUN python3 -m pip install -r requirements.txt
 
 # Instalar PyTorch e torchvision
 RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
@@ -39,13 +39,13 @@ RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.v
 
 RUN pip3 install tensorrt
 
-RUN pip install tiktoken
+RUN pip3 install tiktoken
 
-RUN pip install einops
+RUN pip3 install einops
 
-RUN pip install pytest
+RUN pip3 install pytest
 
-RUN pip install flash-attn
+RUN pip3 install flash-attn
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
