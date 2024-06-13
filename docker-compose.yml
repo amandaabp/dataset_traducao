@@ -1,7 +1,7 @@
 version: '1'
 services:
   mtebservice:
-    command: tail -F anything
+    command: tail -f /dev/null
     build:
       context: .
       dockerfile: PythonGPU.Dockerfile
