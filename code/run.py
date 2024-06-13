@@ -79,7 +79,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS, description="End-to-end AI Question/Answer example for gen-ai")
-    parser.add_argument('-m cuda/cuda-int4-rtn-block-32 ', '--model', type=str, required=True, help='Onnx model folder path (must contain config.json and model.onnx)')
+    parser.add_argument('-m cuda', 'cuda-int4-rtn-block-32 ', type=str, required=True, help='Onnx model folder path (must contain config.json and model.onnx)')
     parser.add_argument('-v', '--verbose', action='store_true', default=False, help='Print verbose output and timing information. Defaults to false')
     parser.add_argument('-g', '--timings', action='store_true', default=False, help='Print timing information for each generation step. Defaults to false')
     args = parser.parse_args()
