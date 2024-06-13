@@ -14,7 +14,7 @@ if torch.cuda.is_available():
 else:
     print("Cuda não está disponível. CPU será usada.")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-tokenizer = AutoTokenizer.from_pretrained(model_id)
+tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
 
 messages = [
     {
