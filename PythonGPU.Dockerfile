@@ -41,7 +41,9 @@ RUN pip install einops
 
 RUN pip install pytest
 
-RUN pip install flash-attn --no-build-isolation
+RUN pip install --upgrade pip
+
+RUN pip install flash-attn
 
 # Copia todo o projeto para dentro do container
 COPY ./ ./
