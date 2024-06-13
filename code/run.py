@@ -11,6 +11,7 @@ model = AutoModelForCausalLM.from_pretrained(
 assert torch.cuda.is_available(), "This model needs a GPU to run ..."
 device = torch.cuda.current_device()
 model = model.to(device)
+print('MODEL',model)
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
 messages = [
