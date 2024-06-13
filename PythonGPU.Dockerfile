@@ -33,7 +33,9 @@ RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install -r requirements.txt
 
 # Instalar PyTorch e torchvision
-RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
+# RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
+RUN pip3 install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
+
 
 # Instalar onnxruntime-genai-cuda
 #RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
@@ -46,7 +48,7 @@ RUN pip3 install einops
 
 RUN pip3 install pytest
 
-RUN CUDA_HOME=/usr/local/cuda-11.7 pip3 install 'flash-attn==1.0.4'
+RUN CUDA_HOME=/usr/local/cuda-11.8 pip3 install 'flash-attn==1.0.4'
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
