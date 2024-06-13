@@ -37,6 +37,8 @@ RUN pip3 install tensorrt
 
 RUN pip install tiktoken
 
+RUN pip install einops
+
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
