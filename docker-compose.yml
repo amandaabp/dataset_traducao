@@ -2,8 +2,6 @@ version: '1'
 services:
   mtebservice:
     build:
-      args: 
-        - BUILDKIT_PROGRESS=plain
       context: .
       dockerfile: PythonGPU.Dockerfile
       shm_size: '2gb' # shared memory size when building
