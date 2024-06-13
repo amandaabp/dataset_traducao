@@ -3,7 +3,7 @@ FROM nvidia/cuda:12.4.1-base-ubuntu20.04
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 # Adicionando variavel de ambiente
-ENV CUDA_HOME = /usr/local/cuda-12.4.1
+ENV CUDA_HOME = /usr/local/cuda-12.4
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 
 # Install system dependencies
@@ -25,11 +25,11 @@ WORKDIR /traducao-amanda-container
 # Copiar os requirements para o container
 COPY ./requirements.txt ./
 
-# Upgrade pip
-RUN python3 -m pip install --upgrade pip
-
 # Instalar pacotes especificados nos requirements
 RUN python3 -m pip install -r requirements.txt
+
+# Upgrade pip
+RUN python3 -m pip install --upgrade pip
 
 # Instalar PyTorch e torchvision
 RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
