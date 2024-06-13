@@ -1,6 +1,7 @@
 version: '1'
 services:
   mtebservice:
+    stdin_open: true
     build:
       context: .
       dockerfile: PythonGPU.Dockerfile
