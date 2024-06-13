@@ -1,3 +1,6 @@
+import os
+print(os.environ.get('CUDA_PATH'))
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 

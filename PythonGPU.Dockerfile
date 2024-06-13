@@ -15,7 +15,7 @@ RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-opencv
 RUN apt-get install -y libglib2.0-0
 #RUN apt-get install -y cuda-11.0
-RUN apt-get install -y cuda-12.4
+RUN apt-get install -y cuda-11.7
 RUN apt-get install -y libcudnn8
 RUN apt-get install -y libcudnn8-dev
 
@@ -46,7 +46,7 @@ RUN pip3 install einops
 
 RUN pip3 install pytest
 
-RUN pip3 install flash-attn===1.0.4
+# RUN pip3 install flash-attn===1.0.4
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 

@@ -13,7 +13,6 @@ services:
     environment:
       - PIP_NO_CACHE_DIR=1
       - NVIDIA_VISIBLE_DEVICES=all
-      - CUDA_HOME=/usr/local/cuda-11.7
 # Para o computador do CEIA: Limitações de CPU e reserva de GPU
     deploy:
       resources:
