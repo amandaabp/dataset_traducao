@@ -48,6 +48,11 @@ RUN pip3 install einops
 
 RUN pip3 install pytest
 
+RUN ls /usr/local
+RUN ls /usr/local/cuda-11.8
+RUN nvcc --version
+
+
 RUN CUDA_HOME=/usr/local/cuda-11.8 pip3 install 'flash-attn==1.0.4'
 # Copia todo o projeto para dentro do container
 COPY ./ ./
