@@ -53,14 +53,15 @@ RUN pip3 install packaging
 
 RUN pip3 install ninja
 
-#RUN CUDA_HOME=/usr/local/cuda-11.7 pip3 install flash-attn --no-build-isolation
-RUN CUDA_HOME=/usr/local/cuda-12.2.1 pip3 install flash-attn --no-build-isolation
+CMD [ "sleep infinity" ]
+
+#RUN CUDA_HOME=/usr/local/cuda-12.2.1 pip3 install flash-attn --no-build-isolation
 # Copia todo o projeto para dentro do container
-COPY ./ ./
+# COPY ./ ./
 
-# Entrar na pasta code-container
-WORKDIR /traducao-amanda-container/code-container
+# # Entrar na pasta code-container
+# WORKDIR /traducao-amanda-container/code-container
 
-# Set the entrypoint
-ENTRYPOINT ["python3","run.py"]
+# # Set the entrypoint
+# ENTRYPOINT ["python3","run.py"]
 #RUN /opt/nvidia/nvidia_entrypoint.sh
