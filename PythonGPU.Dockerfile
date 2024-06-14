@@ -15,10 +15,10 @@ RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-opencv
 RUN apt-get install -y libglib2.0-0
 #RUN apt-get install -y cuda-11.0
-RUN apt-get install -y cuda-11.7
+#RUN apt-get install -y cuda-11.7
 RUN apt-get install -y libcudnn8
 RUN apt-get install -y libcudnn8-dev
-RUN apt-get install -y nvidia-cuda-toolkit
+#RUN apt-get install -y nvidia-cuda-toolkit
 
 # Entrar no diretório de trabalho do container
 WORKDIR /traducao-amanda-container
@@ -34,8 +34,8 @@ RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install -r requirements.txt
 
 # Instalar PyTorch e torchvision
-# RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
-RUN pip3 install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
+RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
+#RUN pip3 install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
 
 
 # Instalar onnxruntime-genai-cuda
@@ -53,7 +53,8 @@ RUN pip3 install packaging
 
 RUN pip3 install ninja
 
-RUN CUDA_HOME=/usr/local/cuda-11.7 pip3 install flash-attn --no-build-isolation
+#RUN CUDA_HOME=/usr/local/cuda-11.7 pip3 install flash-attn --no-build-isolation
+RUN pip3 install flash-attn --no-build-isolation
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
