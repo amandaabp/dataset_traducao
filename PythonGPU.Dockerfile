@@ -53,7 +53,7 @@ RUN pip3 install packaging
 
 RUN pip3 install ninja
 
-CMD [ "sleep infinity" ]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 #RUN CUDA_HOME=/usr/local/cuda-12.2.1 pip3 install flash-attn --no-build-isolation
 # Copia todo o projeto para dentro do container
