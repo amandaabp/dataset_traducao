@@ -62,5 +62,4 @@ WORKDIR /traducao-amanda-container/code-container
 
 # Set the entrypoint
 #ENTRYPOINT ["python3","run.py"]
-ENTRYPOINT [ "/opt/nvidia/nvidia_entrypoint.sh" ] 
-CMD [ "bash" ] 
+RUN /opt/nvidia/nvidia_entrypoint.sh
