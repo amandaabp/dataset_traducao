@@ -66,16 +66,16 @@ RUN pip3 install ninja
 
 # Para interropmer o container e debugar
 # acessar o container com o comando docker exec -it <id> bash
-# ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 # RUN CUDA_HOME=/usr/local/cuda-12.2.1 pip3 install flash-attn --no-build-isolation
-RUN pip3 install flash-attn --no-build-isolation
+#RUN pip3 install flash-attn --no-build-isolation
 
 # Copia todo o projeto para dentro do container
-COPY ./ ./
+#COPY ./ ./
 
 # # Entrar na pasta code-container
-WORKDIR /traducao-amanda-container/code-container
+#WORKDIR /traducao-amanda-container/code-container
 
 # # Set the entrypoint
-ENTRYPOINT ["python3","run.py"]
+#ENTRYPOINT ["python3","run.py"]
