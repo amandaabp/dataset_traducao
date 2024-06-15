@@ -25,11 +25,11 @@ RUN apt-get install -y libcudnn8-dev
 # RUN apt-get install -y nvidia-cuda-toolkit
 
 # instalação do nvidia cuda toolkit mais recente
-RUN apt-get install -y wget
-RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb
-RUN dpkg -i cuda-keyring_1.1-1_all.deb
-RUN apt-get update
-RUN apt-get -y install cuda-toolkit-12-5
+# RUN apt-get install -y wget
+# RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb
+# RUN dpkg -i cuda-keyring_1.1-1_all.deb
+# RUN apt-get update
+# RUN apt-get -y install cuda-toolkit-12-5
 
 # Entrar no diretório de trabalho do container
 WORKDIR /traducao-amanda-container
