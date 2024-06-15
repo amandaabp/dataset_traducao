@@ -54,13 +54,14 @@ RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
 RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
 
 # Build pytorch from source
-RUN apt-get install -y --no-install-recommends libopenblas-dev libblas-dev m4 python3-setuptools python3-yaml
-RUN git clone https://github.com/Kitware/CMake/
-WORKDIR /traducao-amanda-container/CMake
-RUN ./bootstrap
-RUN make
-RUN make install
-WORKDIR /traducao-amanda-container
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends cmake libopenblas-dev libblas-dev m4 python3-setuptools python3-yaml
+# RUN git clone https://github.com/Kitware/CMake/
+# WORKDIR /traducao-amanda-container/CMake
+# RUN ./bootstrap
+# RUN make
+# RUN make install
+# WORKDIR /traducao-amanda-container
 RUN git clone --recursive https://github.com/pytorch/pytorch
 WORKDIR /traducao-amanda-container/pytorch
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
