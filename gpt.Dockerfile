@@ -46,7 +46,7 @@ RUN pip3 install opencv-python-headless PyYAML regex requests
 RUN pip3 install certifi charset-normalizer colorama coloredlogs filelock flatbuffers fsspec 
 RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 
 RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
-RUN pip3 urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
+RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
 
 # Install flash-attn with --no-build-isolation
 RUN pip3 install --no-build-isolation flash-attn
