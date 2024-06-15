@@ -67,7 +67,7 @@ RUN apt-get update && apt-get install -y --reinstall --no-install-recommends \
     python3-gi \
     python3-gi-cairo \
     && rm -rf /var/lib/apt/lists/*
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
     && add-apt-repository ppa:kitware/cmake \ 
     && apt-get update && apt-get install -y cmake \ 
