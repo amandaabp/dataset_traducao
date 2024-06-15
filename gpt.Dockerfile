@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Ensure python3 and pip3 point to Python 3.8
-RUN ln -s /usr/bin/python3.8 /usr/bin/python3
+RUN rm /usr/bin/python3 ln -s /usr/bin/python3.8 /usr/bin/python3
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.8
 
 WORKDIR /traducao-amanda-container
