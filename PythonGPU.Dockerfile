@@ -53,9 +53,14 @@ RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/wh
 #RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
 
 # Instalar compilador Rust para o safetensors e transformers
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN pip3 install setuptools_rust
 
-RUN pip3 install certifi charset-normalizer colorama coloredlogs filelock flatbuffers fsspec huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 PyYAML regex requests safetensors sympy tokenizers tqdm transformers typing_extensions urllib3
+RUN pip3 install certifi charset-normalizer colorama coloredlogs filelock flatbuffers fsspec 
+
+RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 PyYAML regex requests 
+
+RUN pip3 install safetensors sympy tokenizers tqdm transformers typing_extensions urllib3
 
 RUN pip3 install cuda-python
 
