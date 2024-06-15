@@ -53,33 +53,35 @@ RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyread
 RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
 RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
 
-# Build pytorch from source
+### Build pytorch from source
 RUN apt-get update
-# Install CMake 3.18.0+
-RUN git clone --recursive https://github.com/pytorch/pytorch
-RUN apt-get install python3-apt
-WORKDIR /usr/lib/python3/dist-packages
-RUN cp apt_pkg.cpython-36m-x86_64-linux-gnu.so apt_pkg.so
-RUN apt-get remove --purge -y python3-gi
-RUN apt-get update && apt-get install -y --reinstall --no-install-recommends \
-    libgirepository1.0-dev \
-    gir1.2-gtk-3.0 \
-    python3-gi \
-    python3-gi-cairo \
-    && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    software-properties-common \
-    && add-apt-repository ppa:kitware/cmake \ 
-    && apt-get update && apt-get install -y cmake \ 
-    && rm -rf /var/lib/apt/lists/*
-RUN apt-get install -y --no-install-recommends libopenblas-dev libblas-dev m4 python3-setuptools python3-yaml
-WORKDIR /traducao-amanda-container/pytorch
-ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
-ENV TORCH_CUDA_ARCH_LIST="8.0"
-ENV TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-RUN python3 setup.py install
+# Install Miniconda
+RUN curl -sLo ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && chmod +x ~/miniconda.sh \
+    && ~/miniconda.sh -b -p /opt/conda \
+    && rm ~/miniconda.sh \
+    && /opt/conda/bin/conda clean -a
 
-# Install flash-attn with --no-build-isolation
+# Set up conda environment
+ENV PATH="/opt/conda/bin:${PATH}"
+RUN conda create -n pytorch-build python=3.8 cmake ninja
+RUN echo "source activate pytorch-build" >> ~/.bashrc
+SHELL ["/bin/bash", "--login", "-c"]
+
+# Install build dependencies
+RUN conda install -c conda-forge magma-cuda114 # for CUDA 11.4 support
+RUN conda install -c pytorch pytorch-cuda=11.4 # Install PyTorch with CUDA 11.4 from the pytorch channel
+
+# Clone PyTorch source
+WORKDIR /traducao-amanda-container
+RUN git clone --recursive https://github.com/pytorch/pytorch
+WORKDIR /traducao-amanda-container/pytorch
+
+# Build PyTorch from source
+RUN export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"} && \
+    python3 setup.py install
+
+### Install flash-attn with --no-build-isolation
 RUN pip3 install --no-build-isolation 'flash-attn==1.0.0'
 
 # Verify installations
