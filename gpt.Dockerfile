@@ -52,7 +52,7 @@ RUN pip3 install certifi charset-normalizer colorama coloredlogs filelock flatbu
 RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 
 RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
 RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
-RUN pip3 install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1
+RUN pip3 install torch==1.12.1+cu114 torchvision==0.13.1+cu114 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu114
 
 # Install flash-attn with --no-build-isolation
 RUN pip3 install --no-build-isolation 'flash-attn==1.0.0'
