@@ -53,22 +53,6 @@ RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyread
 RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
 RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
 
-### Build MAGMA
-
-# Install MAGMA dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libopenblas-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Clone and build MAGMA from source
-WORKDIR /traducao-amanda-container
-RUN git clone https://bitbucket.org/icl/magma.git
-WORKDIR /traducao-amanda-container/magma
-RUN mkdir build && cd build \
-    && cmake -DCMAKE_INSTALL_PREFIX=/opt/conda/envs/pytorch-build .. \
-    && make -j$(nproc) \
-    && make install
-
 ### Build pytorch from source
 RUN apt-get update
 # Install Miniconda
@@ -85,6 +69,21 @@ RUN echo "source activate pytorch-build" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 
 # Install build dependencies
+RUN conda install -c conda-forge cmake
+# Install MAGMA dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libopenblas-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Clone and build MAGMA from source (CORRECTED POSITION)
+WORKDIR /traducao-amanda-container
+RUN git clone https://bitbucket.org/icl/magma.git
+WORKDIR /traducao-amanda-container/magma
+RUN mkdir build && cd build \
+    && cmake -DCMAKE_INSTALL_PREFIX=/opt/conda/envs/pytorch-build .. \
+    && make -j$(nproc) \
+    && make install
+
 RUN conda install -c conda-forge magma-cuda114 # for CUDA 11.4 support
 RUN conda install -c pytorch pytorch-cuda=11.4 # Install PyTorch with CUDA 11.4 from the pytorch channel
 
