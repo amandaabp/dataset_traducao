@@ -58,6 +58,8 @@ RUN apt-get update
 # Install CMake 3.18.0+
 RUN git clone --recursive https://github.com/pytorch/pytorch
 RUN apt-get install python3-apt
+WORKDIR /usr/lib/python3/dist-packages
+RUN cp apt_pkg.cpython-36m-x86_64-linux-gnu.so apt_pkg.so
 RUN apt-get install -y --no-install-recommends \
     software-properties-common \
     && add-apt-repository ppa:kitware/cmake \ 
