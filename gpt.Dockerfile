@@ -46,7 +46,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install Python packages (without flash-attn)
-RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
+#RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
+RUN pip3 install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
 RUN pip3 install opencv-python-headless PyYAML regex requests 
 RUN pip3 install certifi charset-normalizer colorama coloredlogs filelock flatbuffers fsspec 
 RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 
