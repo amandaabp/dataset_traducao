@@ -55,14 +55,14 @@ RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging n
 
 # Build pytorch from source
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends cmake libopenblas-dev libblas-dev m4 python3-setuptools python3-yaml
-# RUN git clone https://github.com/Kitware/CMake/
-# WORKDIR /traducao-amanda-container/CMake
-# RUN ./bootstrap
-# RUN make
-# RUN make install
-# WORKDIR /traducao-amanda-container
+# Install CMake 3.18.0+
 RUN git clone --recursive https://github.com/pytorch/pytorch
+RUN apt-get install -y --no-install-recommends \
+    software-properties-common \
+    && add-apt-repository ppa:kitware/cmake \ 
+    && apt-get update && apt-get install -y cmake \ 
+    && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y --no-install-recommends libopenblas-dev libblas-dev m4 python3-setuptools python3-yaml
 WORKDIR /traducao-amanda-container/pytorch
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 ENV TORCH_CUDA_ARCH_LIST="8.0"
