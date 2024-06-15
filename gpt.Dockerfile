@@ -60,6 +60,13 @@ RUN git clone --recursive https://github.com/pytorch/pytorch
 RUN apt-get install python3-apt
 WORKDIR /usr/lib/python3/dist-packages
 RUN cp apt_pkg.cpython-36m-x86_64-linux-gnu.so apt_pkg.so
+RUN apt-get remove --purge -y python3-gi
+RUN apt-get update && apt-get install -y --reinstall --no-install-recommends \
+    libgirepository1.0-dev \
+    gir1.2-gtk-3.0 \
+    python3-gi \
+    python3-gi-cairo \
+    && rm -rf /var/lib/apt/lists/*
 RUN apt-get install -y --no-install-recommends \
     software-properties-common \
     && add-apt-repository ppa:kitware/cmake \ 
