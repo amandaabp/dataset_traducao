@@ -54,7 +54,7 @@ RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
 RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
 
 # Install flash-attn with --no-build-isolation
-RUN pip3 install --no-build-isolation flash-attn
+RUN pip3 install --no-build-isolation 'flash-attn==1.0.0'
 
 # Verify installations
 RUN rustc --version
