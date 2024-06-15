@@ -51,7 +51,7 @@ RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/wh
 
 # Instalar onnxruntime-genai-cuda
 #RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
-RUN pip install certifi charset-normalizer colorama coloredlogs filelock flatbuffers fsspec huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 PyYAML regex requests safetensors sympy tokenizers tqdm transformers typing_extensions urllib3
+RUN pip3 install certifi charset-normalizer colorama coloredlogs filelock flatbuffers fsspec huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 PyYAML regex requests safetensors sympy tokenizers tqdm transformers typing_extensions urllib3
 
 RUN pip3 install cuda-python
 
