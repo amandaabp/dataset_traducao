@@ -57,6 +57,7 @@ RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyread
 
 # Instalar compilador Rust para o safetensors e transformers
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="$HOME/.cargo/bin:$PATH"
 RUN apt-get install build-essential
 RUN pip3 install setuptools_rust
 
