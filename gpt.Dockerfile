@@ -5,9 +5,9 @@ FROM nvidia/cuda:11.4.3-base-ubuntu18.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Set CUDA paths
-ENV CUDA_HOME=/usr/local/cuda
-ENV PATH=${CUDA_HOME}/bin:${PATH}
-ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+# ENV CUDA_HOME=/usr/local/cuda
+# ENV PATH=${CUDA_HOME}/bin:${PATH}
+# ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
 # Install necessary packages
 RUN apt-get update && apt-get install -y \
@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     ffmpeg \
     libsm6 \
     libxext6 \
+    git \
     && add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update && apt-get install -y \
     python3.8 \
