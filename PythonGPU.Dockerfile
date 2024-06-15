@@ -11,6 +11,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update 
 
 RUN apt-get install -y curl
+RUN apt-get install -y build-essential
+RUN apt-get install -y pkg-config
+RUN apt-get install -y libssl-dev
 RUN apt-get install -y git
 RUN apt-get install -y python3-pip
 RUN apt-get install -y python3-dev
@@ -57,9 +60,7 @@ RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyread
 
 # Instalar compilador Rust para o safetensors e transformers
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="$HOME/.cargo/bin:$PATH"
-RUN apt-get install build-essential
-RUN pip3 install setuptools_rust
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN pip3 install safetensors sympy tokenizers tqdm transformers typing_extensions urllib3
 
