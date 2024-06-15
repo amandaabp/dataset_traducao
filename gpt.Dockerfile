@@ -54,7 +54,7 @@ RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
 RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
 
 # Build pytorch from source
-RUN apt-get install -y cmake libopenblas-dev libblas-dev m4 python3-setuptools python3-yaml
+RUN apt-get install -y --no-install-recommends cmake libopenblas-dev libblas-dev m4 python3-setuptools python3-yaml
 RUN git clone --recursive https://github.com/pytorch/pytorch
 WORKDIR /traducao-amanda-container/pytorch
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
