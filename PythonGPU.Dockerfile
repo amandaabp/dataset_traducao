@@ -13,10 +13,9 @@ RUN apt-get install -y pkg-config
 RUN apt-get install -y libssl-dev
 RUN apt-get install -y git
 RUN apt-get install -y python3.8
-RUN apt-get install -y python3-pip
 RUN apt-get install -y python3.8-venv
 RUN apt-get install -y python3.8-dev
-RUN apt-get install -y python3-opencv
+RUN apt-get install -y python3-pip
 RUN apt-get install -y libglib2.0-0
 #RUN apt-get install -y cuda-11.0
 #RUN apt-get install -y cuda-11.7
@@ -55,7 +54,7 @@ RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/wh
 
 # Instalar onnxruntime-genai-cuda
 #RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
-
+RUN pip3 install opencv-python-headless
 RUN pip3 install certifi charset-normalizer colorama coloredlogs filelock flatbuffers fsspec 
 RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyreadline3 PyYAML regex requests 
 
