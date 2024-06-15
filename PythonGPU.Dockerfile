@@ -1,11 +1,8 @@
 #FROM nvidia/cuda:12.4.1-base-ubuntu20.04
 FROM nvidia/cuda:11.4.3-base-ubuntu18.04
 
-# Set environment variables
+# Set environment variables to non-interactive for apt-get
 ENV DEBIAN_FRONTEND=noninteractive
-# Adicionando variavel de ambiente
-# ENV CUDA_HOME = /usr/local/cuda-12.4
-# ENV PATH=${CUDA_HOME}/bin:${PATH}
 
 # Install system dependencies
 RUN apt-get update 
@@ -15,14 +12,20 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y pkg-config
 RUN apt-get install -y libssl-dev
 RUN apt-get install -y git
+RUN apt-get install -y python3.8
 RUN apt-get install -y python3-pip
-RUN apt-get install -y python3-dev
-RUN apt-get install -y python3-opencv
+RUN apt-get install -y python3.8-venv
+RUN apt-get install -y python3.8-dev
+RUN apt-get install -y python3.8-opencv
 RUN apt-get install -y libglib2.0-0
 #RUN apt-get install -y cuda-11.0
 #RUN apt-get install -y cuda-11.7
 RUN apt-get install -y libcudnn8
 RUN apt-get install -y libcudnn8-dev
+
+# Ensure pip points to Python 3.8
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+RUN update-alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip3 1
 
 # Esse comando funciona, mas o nvcc --version é 10.1. Muito antigo.
 # RUN apt-get install -y nvidia-cuda-toolkit
@@ -43,14 +46,12 @@ COPY ./requirements.txt ./
 # Upgrade pip
 RUN python3 -m pip install --upgrade pip
 
-
 # Instalar pacotes especificados nos requirements
 # RUN python3 -m pip install -r requirements.txt
 
 # Instalar PyTorch e torchvision
 RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
 #RUN pip3 install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
-
 
 # Instalar onnxruntime-genai-cuda
 #RUN pip3 install onnxruntime-genai-cuda --pre --index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-genai/pypi/simple/
