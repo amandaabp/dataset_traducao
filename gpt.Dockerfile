@@ -35,12 +35,11 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install Python packages (without flash-attn)
+RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
+
 RUN pip3 install \
     safetensors \
     opencv-python-headless \
-    torch \
-    torchvision \
-    torchaudio \
     certifi \
     charset-normalizer \
     colorama \
