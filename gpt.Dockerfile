@@ -69,11 +69,12 @@ RUN echo "source activate pytorch-build" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 
 # Install build dependencies
+ENV CONDA_SOLVER=classic
 RUN conda install -c conda-forge cmake
 RUN conda install -c conda-forge gfortran
 # Install MAGMA dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libopenblas-dev \
+    libopenblas-dev libarchive-dev\
     && rm -rf /var/lib/apt/lists/*
 
 # Clone and build MAGMA from source (CORRECTED POSITION)
