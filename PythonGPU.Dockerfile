@@ -4,9 +4,13 @@ FROM nvidia/cuda:11.4.3-base-ubuntu18.04
 # Set environment variables to non-interactive for apt-get
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Set CUDA paths
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+
 # Install system dependencies
 RUN apt-get update 
-
 RUN apt-get install -y curl
 RUN apt-get install -y build-essential
 RUN apt-get install -y pkg-config
@@ -16,11 +20,11 @@ RUN apt-get install -y python3.8
 RUN apt-get install -y python3.8-venv
 RUN apt-get install -y python3.8-dev
 RUN apt-get install -y python3-pip
-RUN apt-get install -y libglib2.0-0
+#RUN apt-get install -y libglib2.0-0
 #RUN apt-get install -y cuda-11.0
 #RUN apt-get install -y cuda-11.7
-RUN apt-get install -y libcudnn8
-RUN apt-get install -y libcudnn8-dev
+#RUN apt-get install -y libcudnn8
+#RUN apt-get install -y libcudnn8-dev
 
 # Ensure python3 and pip3 point to Python 3.8
 RUN ln -s /usr/bin/python3.8 /usr/bin/python3
