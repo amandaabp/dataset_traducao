@@ -53,6 +53,22 @@ RUN pip3 install huggingface-hub humanfriendly idna mpmath numpy protobuf pyread
 RUN pip3 install safetensors tokenizers tqdm transformers typing_extensions
 RUN pip3 install urllib3 cuda-python tensorrt tiktoken einops pytest packaging ninja
 
+### Build MAGMA
+
+# Install MAGMA dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libopenblas-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Clone and build MAGMA from source
+WORKDIR /traducao-amanda-container
+RUN git clone https://bitbucket.org/icl/magma.git
+WORKDIR /traducao-amanda-container/magma
+RUN mkdir build && cd build \
+    && cmake -DCMAKE_INSTALL_PREFIX=/opt/conda/envs/pytorch-build .. \
+    && make -j$(nproc) \
+    && make install
+
 ### Build pytorch from source
 RUN apt-get update
 # Install Miniconda
