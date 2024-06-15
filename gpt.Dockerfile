@@ -70,6 +70,7 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 # Install build dependencies
 RUN conda install -c conda-forge cmake
+RUN conda install -c conda-forge gfortran
 # Install MAGMA dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libopenblas-dev \
