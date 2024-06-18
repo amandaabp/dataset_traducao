@@ -1,7 +1,7 @@
 version: '1'
 services: 
   jupyter_lab:
-    container_name: jupyter_lab
+    container_name: amanda-jupyter
     build:
       context: .
       dockerfile: jupyter.Dockerfile
@@ -11,4 +11,5 @@ services:
       - JUPYTER_ENABLE_LAB=yes
     volumes: 
       - ./code:/traducao-amanda-container/code-container
+    
       
