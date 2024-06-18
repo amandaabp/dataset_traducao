@@ -23,7 +23,7 @@ RUN pip3 install jupyter
 COPY ./ ./
 
 # Set the entrypoint
-ENTRYPOINT ["jupyter","notebook","--allow-root"]
+ENTRYPOINT ["jupyter","notebook","--ip","0.0.0.0","--no-browser","--allow-root"]
 
 # Expose the port Jupyter Notebook will use
 EXPOSE 8888
