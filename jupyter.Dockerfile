@@ -26,4 +26,4 @@ COPY ./ ./
 WORKDIR /mteb-amanda-container/code-container
 
 # Set the entrypoint
-ENTRYPOINT ["jupyter","notebook"]
+ENTRYPOINT ["jupyter","notebook","--allow-root","&"]
