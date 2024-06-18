@@ -4,7 +4,7 @@ RUN apt-get update -y
 RUN apt-get install -y python3-dev python3-pip build-essential
 
 # Entrar no diretório de trabalho do container
-WORKDIR /mteb-amanda-container
+WORKDIR /traducao-amanda-container
 
 # Copiar os requirements para o container
 COPY ./requirements.txt ./
@@ -22,8 +22,8 @@ RUN pip3 install jupyter
 # Copia todo o projeto para dentro do container
 COPY ./ ./
 
-# Entrar na pasta code-container
-WORKDIR /mteb-amanda-container/code-container
-
 # Set the entrypoint
-ENTRYPOINT ["jupyter","notebook","--allow-root","&"]
+ENTRYPOINT ["jupyter","notebook","--allow-root"]
+
+# Expose the port Jupyter Notebook will use
+EXPOSE 8888
