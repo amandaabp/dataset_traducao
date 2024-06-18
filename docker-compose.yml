@@ -13,5 +13,9 @@ services:
       - ./code:/traducao-amanda-container/code
     networks:
       - amanda-network
+networks:
+  default:
+    external:
+      name: amanda-network
     
       
