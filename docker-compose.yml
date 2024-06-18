@@ -11,6 +11,8 @@ services:
       - JUPYTER_ENABLE_LAB=yes
     volumes: 
       - ./code:/traducao-amanda-container/code
+    networks:
+      - amanda-network
 networks:
   default:
     external:
