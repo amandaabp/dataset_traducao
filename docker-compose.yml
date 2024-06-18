@@ -9,7 +9,6 @@ services:
       - "60701:8888"
     environment: 
       - JUPYTER_ENABLE_LAB=yes
-      - PIP_NO_CACHE_DIR=1
     volumes: 
       - ./code:/traducao-amanda-container/code-container
       
