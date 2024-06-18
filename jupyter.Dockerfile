@@ -19,6 +19,9 @@ RUN pip3 install -r requirements.txt
 # Instalar Jupyter
 RUN pip3 install jupyter
 
+# Copia todo o projeto para dentro do container
+COPY ./ ./
+
 # Entrar na pasta code-container
 WORKDIR /mteb-amanda-container/code-container
 
