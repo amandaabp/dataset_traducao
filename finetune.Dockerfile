@@ -1,17 +1,22 @@
-FROM nvidia/docker:latest
+FROM nvidia/cuda:11.1-cudnn8-base
 
 WORKDIR /app
 
-COPY requirements.txt ./
 RUN pip install -U FlagEmbedding
 
-# Copia todo o projeto para dentro do container
-COPY ./ ./
+COPY . .
 
-CMD ["python3", "-m", "FlagEmbedding.baai_general_embedding.finetune.run",
-    "--output_dir", "resultado_modelo",
-    "--model_name_or_path", "BAAI/bge-large-zh-v1.5",
-    "--train_data", "dados_concatenados.jsonl",
+# Definir variáveis de ambiente
+ENV CUDA_VISIBLE_DEVICES=3
+ENV MODEL_NAME_OR_PATH=BAAI/bge-m3
+ENV TRAIN_DATA=dados_concatenados.jsonl
+ENV OUTPUT_DIR=resultado_modelo
+
+CMD [
+    "python3", "-m", "FlagEmbedding.baai_general_embedding.finetune.run",
+    "--output_dir", "$OUTPUT_DIR",
+    "--model_name_or_path", "$MODEL_NAME_OR_PATH",
+    "--train_data", "$TRAIN_DATA",
     "--learning_rate", "2e-5",
     "--fp16",
     "--num_train_epochs", "3",
@@ -23,4 +28,5 @@ CMD ["python3", "-m", "FlagEmbedding.baai_general_embedding.finetune.run",
     "--passage_max_len", "256",
     "--train_group_size", "2",
     "--logging_steps", "10",
-    "--save_steps", "10000"]
+    "--save_steps", "10000"
+]
