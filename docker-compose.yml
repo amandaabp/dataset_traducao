@@ -4,11 +4,12 @@ services:
     container_name: amanda-jupyter
     build:
       context: .
-      dockerfile: jupyter.Dockerfile
+      dockerfile: jupyterGPU.Dockerfile
     ports: 
       - "60701:8888"
     environment: 
       - JUPYTER_ENABLE_LAB=yes
+      - NVIDIA_VISIBLE_DEVICES=3
     volumes: 
       - ./code:/traducao-amanda-container/code
 networks:
