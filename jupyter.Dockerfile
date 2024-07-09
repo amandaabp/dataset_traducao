@@ -3,12 +3,8 @@ FROM python:3.9
 # Entrar no diretório de trabalho do container
 # WORKDIR /traducao-amanda-container
 
-# Copiar os requirements para o container
+# Copiar os requirements para o container e instalá-los
 COPY ./requirements.txt ./
-
-# Instalar pacotes especificados nos requirements
-COPY requirements.txt /requirements.txt 
-
 RUN pip3 install -r requirements.txt --progress-bar off
 
 # Instalar Jupyter
