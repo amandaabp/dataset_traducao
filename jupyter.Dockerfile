@@ -12,7 +12,7 @@ COPY requirements.txt /requirements.txt
 RUN pip3 install -r requirements.txt --progress-bar off
 
 # Instalar Jupyter
-RUN pip3 install jupyter
+RUN pip3 install jupyter --progress-bar off
 
 # Copia todo o projeto para dentro do container
 COPY ./ ./
