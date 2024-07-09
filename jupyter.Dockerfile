@@ -1,8 +1,5 @@
 FROM python:3.9
 
-RUN apt-get update -y
-RUN apt-get install -y  build-essential
-
 # Entrar no diretório de trabalho do container
 WORKDIR /traducao-amanda-container
 
