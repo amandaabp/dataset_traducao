@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update -y
-RUN apt-get install -y python3-dev python3-pip build-essential
+RUN apt-get install -y python3.9 python3.9-dev python3-pip build-essential
 
 # Entrar no diretório de trabalho do container
 WORKDIR /traducao-amanda-container
